@@ -1,0 +1,7 @@
+
+ <%@productVideoIds.each do |video2|%>
+  <%product=Product.find(video2)%>
+ <%if product.video.present?%>
+ <li><%= link_to   "This is my video" , "localhost:3000#{product.video.url}" %></li>
+ <%end%>
+ <%end%>

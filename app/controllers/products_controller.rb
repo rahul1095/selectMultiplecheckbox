@@ -5,10 +5,12 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(:page => params[:page], :per_page => 15)
+    @products = Product.all.paginate(:page => params[:page], :per_page => 10)
   end
   def download
-    redirect_to products_path
+     respond_to do |format|
+     format.html { render :download, status: :created}
+  end
   end
 
   # GET /products/1

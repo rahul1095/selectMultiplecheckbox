@@ -1,51 +1,12 @@
 
-<p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
-<%= link_to "Download", download_products_path  %>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Desciption</th>
-      <th>Video</th>
-      <th>Video url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<a href="#" class="yourlink">Click Here</a>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <th><input type="checkbox" value= "<%= product.id %>" class="downloadCheckBox chkBox_<%= product.id %>"/></th>
-        <td><%= product.title %></td>
-        <td><%= product.desciption %></td>
-        <td><%= product.video %></td>
-        <td><%= product.video_url %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<script type="text/javascript">
+$('a.yourlink').click(function(e) {
+    e.preventDefault();
+    window.open('http://youtube.com');
+    window.open('http://yoururl2.com');
+});
 
-<br>
-<%= will_paginate @products %>
-<%= link_to 'New Product', new_product_path %>
-
-<script>
-  <% unless  params[:page] %>
-    var productVideoIds = [];
-    Cookies.set("productVideoIds",productVideoIds);
-  <% end %>
-  <% if @productVideoIds %>
-    var getProductVideoIds = <%= @productVideoIds %>
-    for(i = 0;i<getProductVideoIds.length;i++) {
-        var productID = getProductVideoIds[i]
-        $(".chkBox_"+ productID).prop('checked',true)
-    }
-    console.log(getProductVideoIds);
-  <% end %>
 </script>
